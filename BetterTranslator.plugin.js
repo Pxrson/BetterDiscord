@@ -55,8 +55,8 @@ module.exports = (() => {
                 }
             });
         }
-        start() { }
-        stop() { }
+        start() {}
+        stop() {}
     } : (([Plugin, Library]) => {
         const { Patcher, Settings, Utilities, WebpackModules, DiscordModules, Logger } = Library;
 
@@ -90,51 +90,32 @@ module.exports = (() => {
                 this.settings = {...this.defaultSettings};
             }
 
-            onLoad() {
+            load() {
                 this.settings = Utilities.loadSettings(this.getName(), this.defaultSettings);
             }
 
-            onStart() {
+            start() {
                 try {
                     this.addStyles();
                     this.patchMessageContextMenu();
                     BdApi.showToast("BetterTranslator started! 🚀", { type: "success" });
                 } catch (error) {
-                    Logger.error(this.getName(), "Failed to start:", error);
+                    console.error("BetterTranslator failed to start:", error);
                     BdApi.showToast("BetterTranslator failed to start!", { type: "error" });
                 }
             }
 
-            onStop() {
+            stop() {
                 try {
                     Patcher.unpatchAll();
                     this.removeStyles();
                     BdApi.showToast("BetterTranslator stopped!", { type: "info" });
                 } catch (error) {
-                    Logger.error(this.getName(), "Failed to stop:", error);
+                    console.error("BetterTranslator failed to stop:", error);
                 }
             }
 
-            onStart() {
-                try {
-                    this.addStyles();
-                    this.patchMessageContextMenu();
-                    BdApi.showToast("BetterTranslator started! 🚀", { type: "success" });
-                } catch (error) {
-                    Logger.error(this.getName(), "Failed to start:", error);
-                    BdApi.showToast("BetterTranslator failed to start!", { type: "error" });
-                }
-            }
-
-            onStop() {
-                try {
-                    Patcher.unpatchAll();
-                    this.removeStyles();
-                    BdApi.showToast("BetterTranslator stopped!", { type: "info" });
-                } catch (error) {
-                    Logger.error(this.getName(), "Failed to stop:", error);
-                }
-            }
+            getSettingsPanel() {
                 try {
                     return Settings.SettingPanel.build(() => this.saveSettings(), 
                         new Settings.SettingGroup("API Configuration", {
@@ -169,7 +150,7 @@ module.exports = (() => {
                         )
                     );
                 } catch (error) {
-                    Logger.error(this.getName(), "Settings panel error:", error);
+                    console.error("BetterTranslator settings panel error:", error);
                     return BdApi.React.createElement("div", {}, "Settings panel failed to load");
                 }
             }
@@ -178,7 +159,7 @@ module.exports = (() => {
                 try {
                     Utilities.saveSettings(this.getName(), this.settings);
                 } catch (error) {
-                    Logger.error(this.getName(), "Failed to save settings:", error);
+                    console.error("BetterTranslator failed to save settings:", error);
                 }
             }
 
@@ -223,7 +204,7 @@ module.exports = (() => {
                         detectedLanguage: data.translations[0].detected_source_language
                     };
                 } catch (error) {
-                    Logger.error(this.getName(), 'Translation failed:', error);
+                    console.error('BetterTranslator translation failed:', error);
                     throw error;
                 }
             }
@@ -302,7 +283,7 @@ module.exports = (() => {
                         const targetLang = btn.dataset.lang;
                         if (targetLang === this.settings.targetLanguage) return;
                         
-                        const originalText = btn.textContent;
+                        const originalBtnText = btn.textContent;
                         btn.disabled = true;
                         btn.textContent = '...';
                         
@@ -317,7 +298,7 @@ module.exports = (() => {
                             BdApi.showToast(`Translation failed: ${error.message}`, { type: 'error' });
                         } finally {
                             btn.disabled = false;
-                            btn.textContent = originalText;
+                            btn.textContent = originalBtnText;
                         }
                     });
                 });
@@ -330,7 +311,7 @@ module.exports = (() => {
                     const MessageContextMenu = WebpackModules.getModule(m => m.default?.displayName === "MessageContextMenu");
                     
                     if (!MessageContextMenu) {
-                        Logger.warn(this.getName(), "Could not find MessageContextMenu");
+                        console.warn("BetterTranslator: Could not find MessageContextMenu");
                         return;
                     }
 
@@ -353,11 +334,11 @@ module.exports = (() => {
                                 ret.props.children.splice(1, 0, translateItem);
                             }
                         } catch (error) {
-                            Logger.error(this.getName(), "Context menu patch error:", error);
+                            console.error("BetterTranslator context menu patch error:", error);
                         }
                     });
                 } catch (error) {
-                    Logger.error(this.getName(), "Failed to patch context menu:", error);
+                    console.error("BetterTranslator failed to patch context menu:", error);
                 }
             }
 
@@ -399,7 +380,7 @@ module.exports = (() => {
                     if (loadingElement?.parentElement) loadingElement.parentElement.remove();
                     
                     BdApi.showToast(`Translation failed: ${error.message}`, { type: 'error' });
-                    Logger.error(this.getName(), "Translation error:", error);
+                    console.error("BetterTranslator translation error:", error);
                 }
             }
 
