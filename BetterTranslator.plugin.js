@@ -115,7 +115,26 @@ module.exports = (() => {
                 }
             }
 
-            getSettingsPanel() {
+            onStart() {
+                try {
+                    this.addStyles();
+                    this.patchMessageContextMenu();
+                    BdApi.showToast("BetterTranslator started! 🚀", { type: "success" });
+                } catch (error) {
+                    Logger.error(this.getName(), "Failed to start:", error);
+                    BdApi.showToast("BetterTranslator failed to start!", { type: "error" });
+                }
+            }
+
+            onStop() {
+                try {
+                    Patcher.unpatchAll();
+                    this.removeStyles();
+                    BdApi.showToast("BetterTranslator stopped!", { type: "info" });
+                } catch (error) {
+                    Logger.error(this.getName(), "Failed to stop:", error);
+                }
+            }
                 try {
                     return Settings.SettingPanel.build(() => this.saveSettings(), 
                         new Settings.SettingGroup("API Configuration", {
