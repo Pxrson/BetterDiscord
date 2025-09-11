@@ -18,23 +18,8 @@ module.exports = (() => {
                 github_username: "Pxrson"
             }],
             version: "2.0.0",
-            description: "Super accurate Discord message translation using DeepL API with comprehensive language support",
-            github: "https://github.com/Pxrson/BetterTranslator",
-            github_raw: "https://github.com/Pxrson/BetterTranslator/blob/main/BetterTranslator.plugin.js"
-        },
-        changelog: [
-            {
-                title: "v2.0.0",
-                items: [
-                    "Added comprehensive language support (60+ languages)",
-                    "Implemented DeepL API integration",
-                    "Added quick translate buttons",
-                    "Enhanced UI with beautiful gradients",
-                    "Added context menu integration",
-                    "Implemented auto-translation feature"
-                ]
-            }
-        ]
+            description: "Super accurate Discord message translation using DeepL API with comprehensive language support"
+        }
     };
 
     return !global.ZeresPluginLibrary ? class {
@@ -58,7 +43,7 @@ module.exports = (() => {
         start() {}
         stop() {}
     } : (([Plugin, Library]) => {
-        const { Patcher, Settings, Utilities, WebpackModules, DiscordModules, Logger } = Library;
+        const { Patcher, Settings, Utilities, WebpackModules, DiscordModules } = Library;
 
         const LANGUAGES = {
             'BG': 'Bulgarian', 'CS': 'Czech', 'DA': 'Danish', 'DE': 'German',
@@ -75,7 +60,7 @@ module.exports = (() => {
 
         const QUICK_TRANSLATE_LANGUAGES = ['EN-US', 'ES', 'DE', 'FR', 'JA', 'ZH-CN', 'RU', 'IT'];
 
-        return class BetterTranslator extends Plugin {
+        class BetterTranslator extends Plugin {
             constructor() {
                 super();
                 this.defaultSettings = {
@@ -90,11 +75,11 @@ module.exports = (() => {
                 this.settings = {...this.defaultSettings};
             }
 
-            load() {
+            onLoad() {
                 this.settings = Utilities.loadSettings(this.getName(), this.defaultSettings);
             }
 
-            start() {
+            onStart() {
                 try {
                     this.addStyles();
                     this.patchMessageContextMenu();
@@ -105,7 +90,7 @@ module.exports = (() => {
                 }
             }
 
-            stop() {
+            onStop() {
                 try {
                     Patcher.unpatchAll();
                     this.removeStyles();
@@ -118,16 +103,12 @@ module.exports = (() => {
             getSettingsPanel() {
                 try {
                     return Settings.SettingPanel.build(() => this.saveSettings(), 
-                        new Settings.SettingGroup("API Configuration", {
-                            shown: true
-                        }).append(
+                        new Settings.SettingGroup("API Configuration").append(
                             new Settings.Textbox("DeepL API Key", "Get your free API key from https://www.deepl.com/pro#developer", this.settings.apiKey, (val) => {
                                 this.settings.apiKey = val;
                             }, { placeholder: "Enter your DeepL API key..." })
                         ),
-                        new Settings.SettingGroup("Translation Settings", {
-                            shown: true
-                        }).append(
+                        new Settings.SettingGroup("Translation Settings").append(
                             new Settings.Dropdown("Default Target Language", "Language to translate messages into", this.settings.targetLanguage, Object.entries(LANGUAGES).map(([code, name]) => ({ label: name, value: code })), (val) => {
                                 this.settings.targetLanguage = val;
                             }),
@@ -526,6 +507,8 @@ module.exports = (() => {
             removeStyles() {
                 BdApi.clearCSS(this.getName());
             }
-        };
+        }
+
+        return BetterTranslator;
     })(global.ZeresPluginLibrary.buildPlugin(config));
 });
