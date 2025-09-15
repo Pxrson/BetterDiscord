@@ -1,0 +1,10 @@
+{
+    "currentVersionInfo": {
+        "version": "0.1.6",
+        "hasShownChangelog": true
+    },
+    "settings": {
+        "skipMetadata": false,
+        "voiceDownload": true
+    }
+}

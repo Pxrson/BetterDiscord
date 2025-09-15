@@ -1,0 +1,175 @@
+{
+	"1039345167926308865": {
+		"amounts": {
+			"toastTime": 5,
+			"checkInterval": 10
+		},
+		"choices": {
+			"toastPosition": "right"
+		},
+		"dates": {
+			"logDate": {}
+		},
+		"general": {
+			"addOnlineCount": true,
+			"showTimestamp": false,
+			"muteOnDND": false,
+			"openOnClick": false
+		},
+		"notificationSounds": {
+			"toastonline": {
+				"url": null,
+				"song": null,
+				"mute": false
+			},
+			"desktoponline": {
+				"url": null,
+				"song": null,
+				"mute": false
+			},
+			"toastidle": {
+				"url": null,
+				"song": null,
+				"mute": false
+			},
+			"desktopidle": {
+				"url": null,
+				"song": null,
+				"mute": false
+			},
+			"toastdnd": {
+				"url": null,
+				"song": null,
+				"mute": false
+			},
+			"desktopdnd": {
+				"url": null,
+				"song": null,
+				"mute": false
+			},
+			"toastplaying": {
+				"url": null,
+				"song": null,
+				"mute": false
+			},
+			"desktopplaying": {
+				"url": null,
+				"song": null,
+				"mute": false
+			},
+			"toastlistening": {
+				"url": null,
+				"song": null,
+				"mute": false
+			},
+			"desktoplistening": {
+				"url": null,
+				"song": null,
+				"mute": false
+			},
+			"toaststreaming": {
+				"url": null,
+				"song": null,
+				"mute": false
+			},
+			"desktopstreaming": {
+				"url": null,
+				"song": null,
+				"mute": false
+			},
+			"toastscreensharing": {
+				"url": null,
+				"song": null,
+				"mute": false
+			},
+			"desktopscreensharing": {
+				"url": null,
+				"song": null,
+				"mute": false
+			},
+			"toastoffline": {
+				"url": null,
+				"song": null,
+				"mute": false
+			},
+			"desktopoffline": {
+				"url": null,
+				"song": null,
+				"mute": false
+			}
+		},
+		"notificationStrings": {
+			"online": "$user changed status to '$status'",
+			"idle": "$user changed status to '$status'",
+			"dnd": "$user changed status to '$status'",
+			"playing": "$user started playing '$game'",
+			"listening": "$user started listening to '$song'",
+			"streaming": "$user started streaming '$game'",
+			"screensharing": "$user started screensharing",
+			"offline": "$user changed status to '$status'",
+			"login": "$user just logged in '$status'",
+			"custom": "$user changed status to '$custom'"
+		},
+		"observed": {
+			"friends": {
+				"241964469708652544": {},
+				"575853694675976242": {},
+				"712139015075135528": {},
+				"765285165814775870": {},
+				"790305331217039360": {},
+				"796143608868110397": {},
+				"837686507703238656": {},
+				"840027949117997077": {},
+				"867820995750658068": {},
+				"890963615639826513": {},
+				"905089893573726318": {},
+				"935973174330417214": {},
+				"941329332637425674": {},
+				"977075194512441365": {},
+				"998630429039001800": {},
+				"1001883452787929219": {},
+				"1023404866334359683": {},
+				"1027052010576543804": {},
+				"1037099098395914271": {},
+				"1056620219986100365": {},
+				"1071633510839894026": {},
+				"1087069298515779614": {},
+				"1102587615045226496": {},
+				"1107843244894732298": {},
+				"1121911452723331175": {},
+				"1148685212885196910": {},
+				"1155945716133396491": {},
+				"1172368676536733802": {},
+				"1183551181985960038": {},
+				"1191911993536417907": {},
+				"1207382846134550588": {},
+				"1209310750196113429": {},
+				"1221567915153686648": {},
+				"1227908670394863639": {},
+				"1252851611580235856": {},
+				"1265965228185878532": {},
+				"1280192791787475037": {},
+				"1298018399838015528": {},
+				"1308901618640490570": {},
+				"1312982634988699760": {},
+				"1317950371888496731": {},
+				"1321569912044523583": {},
+				"1321590240078598275": {},
+				"1327086306659930164": {},
+				"1335782169356013612": {},
+				"1337956451573825669": {},
+				"1338227995835371710": {},
+				"1341594721046237285": {},
+				"1359882905022763040": {},
+				"1360597178652950650": {},
+				"1361168716125176032": {},
+				"1361956510338519163": {},
+				"1365897401524813914": {},
+				"1371226315377741926": {},
+				"1372995150019690496": {},
+				"1382755856629764207": {}
+			},
+			"strangers": {}
+		}
+	}
+}

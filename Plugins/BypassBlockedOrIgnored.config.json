@@ -1,0 +1,7 @@
+{
+    "bypassIgnoredUsersModal": true,
+    "bypassBlockedUsersModal": true,
+    "bypassWhenJoining": true,
+    "bypassWhenUserJoins": true,
+    "version": "1.0.10"
+}

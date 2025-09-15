@@ -1,0 +1,20 @@
+{
+    "settings": {
+        "spotifyEmbed": "REPLACE",
+        "spotifyPlayerPlace": "USERAREA",
+        "activityIndicator": true,
+        "enableListenAlong": true,
+        "playerBannerBackground": true,
+        "embedBannerBackground": true,
+        "playerCompactMode": false,
+        "activity": true,
+        "player": true,
+        "Share": true,
+        "Shuffle": true,
+        "Previous": true,
+        "Play": true,
+        "Next": true,
+        "Repeat": true,
+        "Volume": true
+    }
+}

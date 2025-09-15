@@ -1,0 +1,8 @@
+{
+    "settings": {
+        "everyone": true,
+        "here": true,
+        "showRoleIcons": true
+    },
+    "changelogVersion": "1.4.3"
+}

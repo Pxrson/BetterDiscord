@@ -1,0 +1,13 @@
+{
+    "settings": {
+        "messageCustom": "`$author` **$timestamp**\n> $message",
+        "channelCustom": "#$name in **$server**",
+        "categoryCustom": "$name with $channelsCount channels",
+        "voiceCustom": "**#$name** in **$server** with `$usersConnected` connected users.",
+        "guildCustom": "**$name** with `$members`",
+        "userCustom": "**$name** - Created at: `$creation`",
+        "roleCustom": "**$name** - `$colorHEX`",
+        "showButton": true,
+        "latestUsedVersion": "1.6.1"
+    }
+}
