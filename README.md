@@ -1,2 +1,3 @@
-# BetterTranslator
-js betterdiscord translator that uses deepL
+# BetterDiscord Plugins
+---
+plugin files for betterdiscord 
