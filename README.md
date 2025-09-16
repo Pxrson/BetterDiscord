@@ -1,4 +1,4 @@
-# Plugin Files 4 BetterDiscord
+# Plugin Files BetterDiscord
 `-- (ps, most of them AREN'T mine)`
 ---
 __**Link to view files:**__
